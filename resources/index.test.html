@@ -7,17 +7,34 @@
    <title>Socket implementation</title>
  </head>
  <body>
-   <h1 class="msg"></h1>
-   <script src="https://cdn.socket.io/4.2.0/socket.io.js"></script>
+   <h1 class="listener"></h1>
+   <br>
+   <h1 class="sender"></h1>
+   <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
    <script>
-     const socket = io("http://localhost:9001/test");
-    
-     socket.on('test', (msg) => {
-       document.querySelector('.msg').innerHTML = msg;
-     });
- 
-     socket.on('disconnect', () => {
-       document.querySelector('.msg').innerHTML = 'Ops something went wrong!';
+     const socketMain = io("http://localhost:9001");
+     const socketHello = io("http://localhost:9001/hello");
+
+     socketMain.on("connect", () => {
+      console.log(`ID : ${socketMain.id}`); // ojIckSD2jqNzOqIrAGzL
+    });
+
+    /** On adalah Penerima */
+    socketHello.on('test', (msg) => {
+       document.querySelector('.listener').innerHTML = msg;
+    });
+
+    /** Emit adalah Pengirim */
+    socketHello.emit('Hello', `Hi From Client`, (res) => {
+      document.querySelector('.sender').innerHTML = res;
+    })
+
+    //  socketHello.on('testJson', (msg) => {
+    //    console.log(msg);
+    //  });
+     
+     socketHello.on('disconnect', () => {
+       document.querySelector('.msg').innerHTML = 'Terputus dari server socket.io';
      })
    </script>
  </body>
