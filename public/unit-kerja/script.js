@@ -1,3 +1,8 @@
+/**
+ * Javascript Unit Kerja
+ */
+
+
 const buttonSend = document.querySelector("#button-send")
 const idBidang   = document.querySelector("#id-bidang")
 const pesan      = document.querySelector("#pesan")
