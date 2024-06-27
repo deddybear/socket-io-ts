@@ -17,7 +17,7 @@ if (!bidangID) {
 }
 
 
-const socket = io("http://localhost:9001/notif");
+const socket = io("http://localhost:6969/notif");
 
 
 socket.on("send_to_bidang", data => {

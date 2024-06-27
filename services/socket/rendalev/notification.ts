@@ -1,6 +1,6 @@
 import { Socket } from "socket.io";
 import { DefaultEventsMap } from "socket.io/dist/typed-events";
-import { SocketNode } from "../../model/socket/socket-node";
+import { SocketNode } from "../../../model/socket/socket-node";
 
 export class Notification implements SocketNode {
     
@@ -9,19 +9,34 @@ export class Notification implements SocketNode {
         // socket.on('connection', socket => {
         //     console.log(`⚡: ${socket.id} user just connected`)
         // })
-        socket.emit('ping', 'Hi Aku dari server 123 c')
+
+        try {
+            socket.emit('ping', 'Hi Aku dari server 123 c', '')
+        } catch (error) {
+            console.log(error);
+        }
+
+
     }
 
     /** On adalah Receiver atau Penerima */
     handleReceiver(socket: Socket<DefaultEventsMap, DefaultEventsMap, DefaultEventsMap, any>): void {
-        socket.on('listener_uuk', (data) => {
-            socket.broadcast.emit("send_to_bidang", data)
-        })
+        try {
+            socket.on('listener_uuk', (data) => {
+                socket.broadcast.emit("send_to_bidang", data)
+            })
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     handleDisconnect(socket: Socket<DefaultEventsMap, DefaultEventsMap, DefaultEventsMap, any>): void {
-        socket.on('disconnect', reason => {
-            console.log(`⚡: ${reason} user just disconnect`);
-        })
+        try {
+            socket.on('disconnect', reason => {
+                console.log(`⚡: ${reason} user just disconnect`);
+            })
+        } catch (error) {
+            console.log(error);
+        }
     }
 }

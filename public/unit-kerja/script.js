@@ -10,7 +10,7 @@ const data       = {
     messages: '',
     idBidang: ''
 }
-const socket = io("http://localhost:9001/notif");
+const socket = io("http://localhost:6969/notif");
 
 
 const triggerButton = (e) => {

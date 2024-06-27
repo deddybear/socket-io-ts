@@ -1,10 +1,14 @@
 import { Server, Socket } from 'socket.io'
-import { SocketHandlers } from '../model/socket/socket-handler';
+import { SocketHandlers } from '../../model/socket/socket-handler';
+import { SocketConfig } from '../../model/socket/socket-config';
 
-const WEBSOCKET_CORS = {
-    origin: "*",
-    methods: ["GET", "POST"]
+const WEBSOCKET_CONFIG : SocketConfig = {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"],
+    }
 }
+
 
 export class SocketMain extends Server {
 
@@ -12,9 +16,7 @@ export class SocketMain extends Server {
 
     /** CORS UNTUK SOKCET  */
     constructor(httpServer: any) {
-        super(httpServer, {
-            cors: WEBSOCKET_CORS
-        });
+        super(httpServer, WEBSOCKET_CONFIG);
     }
 
     public static getInstance(httpServer? : any): SocketMain {

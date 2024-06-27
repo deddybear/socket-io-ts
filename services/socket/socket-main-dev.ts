@@ -1,3 +1,5 @@
+/** tidak dipakai */
+
 import { Namespace, Server, Socket as IOSocket } from "socket.io";
 
 export class SocketMain {
@@ -40,11 +42,11 @@ export class SocketMain {
         socket.join(room);
     };
 
-    public emitToRoomInSpace = (name: string, space: Namespace, room: string, data: any) => {
+    public emitToRoomInSpace = (name: string, space: Namespace, room: string, data: any) : void => {
         space.to(room).emit(name, data);
     };
 
-    public emitToSpace = (name: string, space: Namespace, data: any) => {
+    public emitToSpace = (name: string, space: Namespace, data: any)  : void => {
         space.emit(name, data);
     };
 }

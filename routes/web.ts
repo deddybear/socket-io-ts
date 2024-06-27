@@ -2,17 +2,19 @@ import Express, {Request, Response} from "express"
 import path = require("path")
 
 const pathView: string = "/resources/view"
-export const router = Express.Router();
+const routerWeb = Express.Router();
 
-router.get("/", (req : Request, res : Response) => {
-    res.status(200).send({"messages" : "Hello World", "Creator": "Dedisu"});
+routerWeb.get("/", (req : Request, res : Response) => {
+    res.status(200).send({"messages" : "Hello World", "creator": "Dedisu"});
 })
 
-router.get("/unit-kerja", (req: Request, res : Response) => {
+routerWeb.get("/unit-kerja", (req: Request, res : Response) => {
     // res.status(200).send(path.resolve(__dirname));
     res.status(200).sendFile(path.join(req.app.get('root_dirname'), `${pathView}/unit-kerja/index.html`))
 })
 
-router.get("/bidang", (req: Request, res : Response) => {
+routerWeb.get("/bidang", (req: Request, res : Response) => {
     res.status(200).sendFile(path.join(req.app.get('root_dirname'), `${pathView}/bidang/index.html`))
 })
+
+export default routerWeb;
