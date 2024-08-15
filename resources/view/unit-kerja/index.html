@@ -18,11 +18,17 @@
     <div class="p-4">
         <header>
             <h2>Kirim Pesan Ke bidang</h2>
+            <h2>Status Server Socket.io : <b id="stateServer"></b></h2>
+            <h2>Status Room Socket.io : <b id="stateRoom"></b></h2>
         </header>
         <form>
             <div class="mb-3">
-                <label for="id-bidang" class="form-label">Bidang ID</label>
+                <label for="id-bidang" class="form-label">Mengirim ke Bidang ID berapa ?</label>
                 <input id="id-bidang" type="text" class="form-control" placeholder="1 / 2 / 3 dst ......">
+            </div>
+            <div class="mb-3">
+                <label for="id-unit" class="form-label">Dari Unit Kerja</label>
+                <input id="id-unit" type="text" class="form-control" placeholder="Isikan instalasi">
             </div>
             <div class="mb-3">
                 <label for="pesan" class="form-label">Pesan</label>

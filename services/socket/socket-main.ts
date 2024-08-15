@@ -40,11 +40,11 @@ export class SocketMain extends Server {
         socketHandlers.forEach(element => {
             let namespace = SocketMain.io.of(element.path, (socket: Socket) => {
                 
-                element.handler.handleEmit(socket, SocketMain.io);
+                element.handler.handleEmit(socket)
                 element.handler.handleDisconnect(socket);
 
                 if (element.handler.handleReceiver) {
-                    element.handler.handleReceiver(socket, SocketMain.io)
+                    element.handler.handleReceiver(socket)
                 }
             });
 
