@@ -2,7 +2,7 @@ import express, { urlencoded } from "express"
 import dotenv from "dotenv"
 import { createServer } from "http"
 import { SocketMain } from "./services/socket/socket-main";
-import { Notification } from "./services/socket/rendalev/notification";
+import { NotificationRendalev } from "./services/socket/rendalev/notification-rendalev";
 import { Hello } from "./services/socket/app-test/hello";
 import routerWeb from "./routes/web";
 import {clientRedis} from "./services/redis/redis-main";
@@ -28,6 +28,8 @@ app.use('/', routerWeb)
 app.use('/sirup', routerSirup)
 // app.use(errorHandler)
 
+/** untuk connect ke redis */
+
 // Promise.all(
 //     [pubClient.connect(), subClient.connect()]
 // ).then(() => {
@@ -39,8 +41,10 @@ app.use('/sirup', routerSirup)
 //     httpServer.close();
 // })
 
+/** initsialisasi fungsi socket io */
 io.initializeHandlers([
-    { path: 'notif', handler: new Notification()},
+    /** path : ini di isi terserah menyesuaikan | handler : sesuai nama classnya */
+    { path: 'notif-rendalev', handler: new NotificationRendalev()},
     { path: 'hello', handler: new Hello()}
 ])
 

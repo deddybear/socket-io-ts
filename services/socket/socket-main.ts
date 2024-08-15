@@ -33,17 +33,18 @@ export class SocketMain extends Server {
     }
 
     /**
-     * name
+     * initialisasi handler setiap service socket.io
+     * yang ada di baris code 44: io.initializeHandlers()
      */
     public initializeHandlers(socketHandlers: Array<SocketHandlers>) {
         socketHandlers.forEach(element => {
             let namespace = SocketMain.io.of(element.path, (socket: Socket) => {
                 
-                element.handler.handleEmit(socket);
+                element.handler.handleEmit(socket, SocketMain.io);
                 element.handler.handleDisconnect(socket);
 
                 if (element.handler.handleReceiver) {
-                    element.handler.handleReceiver(socket)
+                    element.handler.handleReceiver(socket, SocketMain.io)
                 }
             });
 

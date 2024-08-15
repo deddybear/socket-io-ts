@@ -1,3 +1,5 @@
+// gak dipakai kok
+
 const socket = io("http://localhost:9001/notif");
 
 socket.on('connect', () => {

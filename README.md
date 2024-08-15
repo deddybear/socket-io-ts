@@ -7,6 +7,7 @@ Project socket.io dengan express framework digunakan pada server 63
  - NPM
  - Express
  - TypeScript
+ - Mongo
 
 ## Instalation For Fresh
  `` npm init -y``
@@ -25,9 +26,9 @@ Project socket.io dengan express framework digunakan pada server 63
 NOTE : DONT RUN NPM UPDATE YA!
 
 ## Run 
- For Run `` npm run dev ``
+ For Run Project `` npm run dev ``
  
- For Build`` npm run build ``
+ For Build Project `` npm run build ``
  
 
 ## Refrence
